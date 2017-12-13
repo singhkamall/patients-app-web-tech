@@ -7,7 +7,9 @@ angular.module('myApp', [
     'myApp.view2',
     'myApp.version',
     'myApp.patients',
-    'myApp.tables'
+    'myApp.tables',
+    'myApp.clinical-data',
+    'myApp.record'
 ]).
     config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
         console.log($locationProvider);

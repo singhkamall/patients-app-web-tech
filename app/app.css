@@ -23,3 +23,14 @@
   content: "|";
   padding-right: 0.3em;
 }
+
+
+/* Clinical Data Table Style */
+.table-striped thead tr th, .table-striped tfoot tr th  {
+  background-color: #343A40;
+  color: #fff;
+}
+
+.actions a {
+  color: black;
+}
