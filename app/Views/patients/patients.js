@@ -9,6 +9,12 @@ angular.module('myApp.patients', ['ngRoute'])
         });
     }])
 
-    .controller('PatientsController', [function () {
+    .controller('PatientsController', function ($scope, $http) {
 
-    }]);
+        $http.get("http://127.0.0.1:5000/patients")
+            .then(function (response) {
+                console.log(response);
+                $scope.patients = response.data;
+            });
+
+    });

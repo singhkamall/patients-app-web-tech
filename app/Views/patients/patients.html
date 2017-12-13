@@ -1,1 +1,36 @@
-<p>This is the partial for Patients.</p>
+<h1>Patients</h1>
+<!-- Example DataTables Card-->
+<div class="card mb-3" ng-controller="PatientsController">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Patients
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date Of Birth</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in patients">
+                        <td>{{ x.patient }}</td>
+                        <td>{{ x.dob }}</td>
+                        <td>
+                            <i title="View" class="fa fa-eye"></i>
+                            <i title="Edit" class="fa fa-pencil"></i>
+                            <i title="Delete" class="fa fa-trash"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Page level plugin JavaScript-->
+<script src="vendor/datatables/jquery.dataTables.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">

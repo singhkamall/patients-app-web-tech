@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app"
+    "\\app",
+    "\\app\\Views",
+    "\\app\\Views\\patients",
+    "\\app\\Views\\table",
+    "\\app\\Views\\view1"
   ],
+  "SelectedNode": "\\app\\index.html",
   "PreviewInSolutionExplorer": false
 }
