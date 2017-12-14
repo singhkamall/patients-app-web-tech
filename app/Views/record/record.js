@@ -41,6 +41,21 @@ angular.module('myApp.record', ['ngRoute'])
             $scope.recordDetails = response.data;
         });
 
+        $scope.updateRecord = function(){
+            $http.put("http://127.0.0.1:5000/patients/" + $scope.patientId + "/records/" + $scope.recordId, 
+            {
+                "Practitioner": $scope.recordDetails.Practitioner,
+                "MedicalCenter": $scope.recordDetails.MedicalCenter,
+                "DateTime": $scope.recordDetails.DateTime,
+                "DataType": $scope.recordDetails.DataType,
+                "Reading": $scope.recordDetails.Reading
+            })
+            .then(function(response){
+                console.log(response);
+            })
+        };
+
+
     });
 
 

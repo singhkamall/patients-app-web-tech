@@ -29,16 +29,18 @@
                         <td>{{ aRecord.DataType }}</td>
                         <td>{{ aRecord.Reading }}</td>
                         <td>{{ aRecord.DateTime }}</td>
-                        <td align="center" class="row actions">
-                            <a class="pull-left col-4" title="View" href="#" ng-href="#!/patients/{{ patientId }}/records/{{ aRecord._id }}">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                            <a class="pull-left col-4" title="Edit" href="#" ng-href="#!/patients/{{ patientId }}/editRecords/{{ aRecord._id }}">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                            </a>
-                            <a class="pull-left col-4"  title="Delete" href="#">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </a>
+                        <td class="actions">
+                            <div class="row">
+                                <a class="btn btn-xs col-4" title="View" ng-href="#!/patients/{{ patientId }}/records/{{ aRecord._id }}">
+                                    <i class="fa fa-eye" ></i>
+                                </a>                                    
+                                <a class="btn btn-xs col-4" title="Edit"  ng-href="#!/patients/{{ patientId }}/editRecords/{{ aRecord._id }}">
+                                    <i class="fa fa-pencil" ></i>
+                                </a>
+                                <a class="btn  btn-xs col-4" data-title="Delete" data-toggle="modal" data-target="#delete"  title="Delete" ng-click="openModal(aRecord._id)" >
+                                    <i class="fa fa-trash" ></i>
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -46,7 +48,32 @@
         </div>
     </div>
     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title custom_align" id="Heading">Delete this Record</h4>
+                    </div>
+                    <div class="modal-body">    
+                        <div class="alert alert-danger"><i class="fa fa-trash" ></i></span> 
+                            Are you sure you want to delete this Record?
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" data-ng-click="deleteRecord(selectedRecordId)" > 
+                            Delete
+                        </button>
+                        <button type="button" class="btn" data-dismiss="modal">
+                            Cancel
+                        </button>
+                    </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 <!-- Page level plugin JavaScript-->
 <script src="vendor/datatables/jquery.dataTables.js"></script>

@@ -34,3 +34,8 @@
 .actions a {
   color: black;
 }
+
+
+.table-striped tbody tr td {
+  vertical-align: middle;
+}
