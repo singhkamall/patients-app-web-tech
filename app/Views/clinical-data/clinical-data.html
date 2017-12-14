@@ -30,10 +30,10 @@
                         <td>{{ aRecord.Reading }}</td>
                         <td>{{ aRecord.DateTime }}</td>
                         <td align="center" class="row actions">
-                            <a class="pull-left col-4" title="View" href="#" ng-href="#!/record/{{ patientId }}/{{ aRecord._id }}">
+                            <a class="pull-left col-4" title="View" href="#" ng-href="#!/patients/{{ patientId }}/records/{{ aRecord._id }}">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
-                            <a class="pull-left col-4" title="Edit" href="#">
+                            <a class="pull-left col-4" title="Edit" href="#" ng-href="#!/patients/{{ patientId }}/editRecords/{{ aRecord._id }}">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
                             <a class="pull-left col-4"  title="Delete" href="#">
