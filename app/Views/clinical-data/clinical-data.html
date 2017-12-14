@@ -1,5 +1,9 @@
-
-<h1>Clinical Data for {{ patient.FirstName }} {{ patient.LastName }}</h1>
+<div class="row">
+    <h1 class="col-md-10 col-sm-12">Clinical Data for {{ patient.FirstName }} {{ patient.LastName }}</h1>
+    <a class="btn btn-xs col-md-2 col-sm-12" title="Create New Record" ng-href="#!/patients/{{ patientId }}/createRecords">
+        <i class="fa fa-plus"></i>Create New Record
+    </a>   
+</div>
 
 <div class="card mb-3" ng-controller="ClinicalDataController">
     <div class="card-header">
