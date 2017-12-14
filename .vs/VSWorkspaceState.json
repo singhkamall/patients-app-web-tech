@@ -2,11 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\app",
+    "\\app\\js",
+    "\\app\\vendor",
+    "\\app\\vendor\\datatables",
     "\\app\\Views",
     "\\app\\Views\\patients",
-    "\\app\\Views\\table",
-    "\\app\\Views\\view1"
+    "\\app\\Views\\table"
   ],
-  "SelectedNode": "\\app\\index.html",
+  "SelectedNode": "\\app\\Views\\patients\\patients.js",
   "PreviewInSolutionExplorer": false
 }
