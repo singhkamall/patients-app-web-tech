@@ -16,5 +16,18 @@ angular.module('myApp', [
 
         $locationProvider.hashPrefix('!');
 
-        $routeProvider.otherwise({ redirectTo: '/view1' });
-    }]);
+        $routeProvider.otherwise({ redirectTo: '/' });
+    }])
+
+   
+    .controller('ScrollController', ['$scope', '$location', '$anchorScroll',
+      function($scope, $location, $anchorScroll) {
+        $scope.scrollToTop = function() {
+          // set the location.hash to the id of
+          // the element you wish to scroll to.
+          $location.hash('page-top');
+    
+          // call $anchorScroll()
+          $anchorScroll();
+        };
+      }]);
