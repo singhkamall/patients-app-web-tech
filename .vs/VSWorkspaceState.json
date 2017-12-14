@@ -4,8 +4,8 @@
     "\\app",
     "\\app\\js",
     "\\app\\vendor",
-    "\\app\\vendor\\datatables",
     "\\app\\Views",
+    "\\app\\Views\\clinical-data",
     "\\app\\Views\\patients",
     "\\app\\Views\\table"
   ],

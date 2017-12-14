@@ -35,6 +35,13 @@
   color: black;
 }
 
+<<<<<<< HEAD
 .filter input{
     width: 100%;
 }
+=======
+
+.table-striped tbody tr td {
+  vertical-align: middle;
+}
+>>>>>>> 181927cb7460a8ea59b3df4e4b30600784bba06e

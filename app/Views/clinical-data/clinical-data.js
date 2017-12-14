@@ -3,13 +3,13 @@
 angular.module('myApp.clinical-data', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/clinical-data/:patientId', {
+        $routeProvider.when('/patients/:patientId/records', {
             templateUrl: 'Views/clinical-data/clinical-data.html',
             controller: 'ClinicalDataController'
         });
     }])
 
-    .controller('ClinicalDataController', function ($scope, $http, $routeParams, $window) {
+    .controller('ClinicalDataController', function ($scope, $http, $routeParams) {
         $scope.patientId = $routeParams.patientId;
 
         $http.get("http://127.0.0.1:5000/patients/" + $scope.patientId)
@@ -20,13 +20,24 @@ angular.module('myApp.clinical-data', ['ngRoute'])
         $http.get("http://127.0.0.1:5000/patients/" + $scope.patientId + "/records")
             .then(function (response) {
                 $scope.records = response.data;
+        });
+
+        $scope.openModal=function (recordId){
+            $scope.selectedRecordId = recordId;
+        }
+
+        $scope.deleteRecord = function(selectedRecordId) {
+            $http.delete("http://127.0.0.1:5000/patients/" + $scope.patientId + "/records/" + selectedRecordId)
+            .then(function (response) {
+                console.log(response);
+                //$scope.records.splice(selectedRecordId,1);
+                $http.get("http://127.0.0.1:5000/patients/" + $scope.patientId + "/records")
+                .then(function (response) {
+                    $scope.records = response.data;
             });
-        // $scope.RedirectToURL = function(recordId) {
-        //     var host = $window.location.host;
-        //     var landingUrl = "http://" + host + "/record/" + $scope.patientId + "/" + recordId;
-        //     console.log(landingUrl);
-        //     $window.location.href = landingUrl;
-        // };
+            });
+        };
+
         
     });
 
