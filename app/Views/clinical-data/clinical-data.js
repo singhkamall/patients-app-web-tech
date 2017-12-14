@@ -3,18 +3,31 @@
 angular.module('myApp.clinical-data', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/clinical-data', {
+        $routeProvider.when('/clinical-data/:patientId', {
             templateUrl: 'Views/clinical-data/clinical-data.html',
             controller: 'ClinicalDataController'
         });
     }])
 
-    .controller('ClinicalDataController', function ($scope, $http) {
-        $http.get("http://127.0.0.1:5000/patients/1/records")
+    .controller('ClinicalDataController', function ($scope, $http, $routeParams, $window) {
+        $scope.patientId = $routeParams.patientId;
+
+        $http.get("http://127.0.0.1:5000/patients/" + $scope.patientId)
+        .then(function (response) {
+            $scope.patient = response.data;
+        });
+
+        $http.get("http://127.0.0.1:5000/patients/" + $scope.patientId + "/records")
             .then(function (response) {
                 $scope.records = response.data;
             });
-
+        // $scope.RedirectToURL = function(recordId) {
+        //     var host = $window.location.host;
+        //     var landingUrl = "http://" + host + "/record/" + $scope.patientId + "/" + recordId;
+        //     console.log(landingUrl);
+        //     $window.location.href = landingUrl;
+        // };
+        
     });
 
 

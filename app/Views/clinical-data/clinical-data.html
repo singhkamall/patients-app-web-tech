@@ -1,9 +1,9 @@
 
-<h1>Clinical Data for Patient Fatih</h1>
+<h1>Clinical Data for {{ patient.FirstName }} {{ patient.LastName }}</h1>
 
 <div class="card mb-3" ng-controller="ClinicalDataController">
     <div class="card-header">
-        <i class="fa fa-table"></i> Clinical Data Record
+        <i class="fa fa-table"></i> Clinical Data Records
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -30,13 +30,13 @@
                         <td>{{ aRecord.Reading }}</td>
                         <td>{{ aRecord.DateTime }}</td>
                         <td align="center" class="row actions">
-                            <a class="pull-left col-4" title="View" href="#">
+                            <a class="pull-left col-4" title="View" href="#" ng-href="#!/record/{{ patientId }}/{{ aRecord._id }}">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
                             <a class="pull-left col-4" title="Edit" href="#">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
-                            <a class="pull-left col-4" title="Delete" href="#">
+                            <a class="pull-left col-4"  title="Delete" href="#">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                         </td>
