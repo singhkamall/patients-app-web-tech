@@ -1,13 +1,15 @@
 <div class="row">
     <h1 class="col-md-10 col-sm-12">Clinical Data for {{ patient.FirstName }} {{ patient.LastName }}</h1>
-    <a class="btn btn-xs col-md-2 col-sm-12" title="Create New Record" ng-href="#!/patients/{{ patientId }}/createRecords">
-        <i class="fa fa-fw fa-plus"></i>Create New Record
-    </a>   
+      
 </div>
 
 <div class="card mb-3" ng-controller="ClinicalDataController">
     <div class="card-header">
         <i class="fa fa-fw fa-table"></i> Clinical Data Records
+
+        <a class="btn btn-xs pull-right col-md-2 col-sm-12" title="Create New Record" ng-href="#!/patients/{{ patientId }}/createRecords">
+            <i class="fa fa-fw fa-plus"></i>Create New Record
+        </a> 
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -20,14 +22,14 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tfoot>
+                <!-- <tfoot>
                     <tr>
                         <th>Measurement Type</th>
                         <th>Reading</th>
                         <th>DateTime</th>
                         <th>Actions</th>
                     </tr>
-                </tfoot>
+                </tfoot> -->
                 <tbody>
                     <tr ng-repeat="aRecord in records">
                         <td>{{ aRecord.DataType }}</td>
@@ -51,7 +53,7 @@
             </table>
         </div>
     </div>
-    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
     <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true" >
         <div class="modal-dialog">
             <div class="modal-content">
@@ -83,4 +85,4 @@
 <script src="vendor/datatables/jquery.dataTables.js"></script>
 <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 <!-- Custom scripts for this page-->
-<script src="js/sb-admin-datatables.min.js"></script>
+<!-- <script src="js/sb-admin-datatables.min.js"></script> -->
