@@ -102,7 +102,7 @@ angular.module('myApp.patients', ['ngRoute'])
 
                 $http.put(apiUrl,
                     {
-                        "_id": $scope.patients._id,
+                        // "_id": $scope.patients._id,
                         "FirstName": $scope.patients.FirstName,
                         "LastName": $scope.patients.LastName,
                         "Address": $scope.patients.Address,
