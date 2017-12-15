@@ -1,4 +1,12 @@
-<h1>{{ title }}</h1>
+<!-- <h1>{{ title }}</h1> -->
+
+<div class="row">
+    <h1 class="col-md-10 col-sm-12">{{ title }}</h1>
+    <a class="btn btn-xs col-md-2 col-sm-12" title="Create New Patient" ng-href="#!/createPatients">
+        <i class="fa fa-fw fa-plus"></i>Create New Patient
+    </a>   
+</div>
+
 <!-- Example DataTables Card-->
 <div class="card mb-3" ng-controller="PatientsController">
     <div class="card-header">
