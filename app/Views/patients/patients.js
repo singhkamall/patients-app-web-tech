@@ -50,11 +50,20 @@ angular.module('myApp.patients', ['ngRoute'])
             apiUrl += "/criticalCondition";
             $scope.title += " in Critical Condition";
         }
-        
-        if ($routeParams.patientEditId)
+        if ($location.path().indexOf('createPatients') >= 0) {
+            $scope.title = "Create New Patient Form";
+            $scope.btnCreateEditPatient = "Create";
+        }
+
+        if ($routeParams.patientEditId) {
             apiUrl += '/' + $scope.patientEditId;
-        else if ($routeParams.patientViewId)
+            $scope.title = "Edit Patient Information Form";
+            $scope.btnCreateEditPatient = "Save";
+        }   
+        else if ($routeParams.patientViewId) {
             apiUrl += '/' + $routeParams.patientViewId;
+            $scope.title = "View Patient Information";
+        }   
 
         var getPatientsData = function () {
             $http.get(apiUrl)
@@ -65,13 +74,13 @@ angular.module('myApp.patients', ['ngRoute'])
         getPatientsData();
 
         $scope.createEditPatient = "createPatient()";
-        $scope.btnCreateEditPatient = "Create";
         $scope.createPatient = function () {
 
             if (!$routeParams.patientEditId) {
 
                 //  Create
                 console.log('creating');
+                
                 $http.post(apiUrl,
                     {
                         "FirstName": $scope.patients.FirstName,
@@ -99,7 +108,7 @@ angular.module('myApp.patients', ['ngRoute'])
             } else {
                 // Edit
                 console.log('editing');
-
+                $scope.title  = "Edit Patient Information Form";
                 $http.put(apiUrl,
                     {
                         // "_id": $scope.patients._id,
