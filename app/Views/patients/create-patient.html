@@ -5,130 +5,144 @@
         <i class="fa fa-fw fa-medkit"></i> Create New Patient Form
     </div>
     <div class="card-body">
-            <form class="form-horizontal">
-                <fieldset>
-                    
-               <!-- Record Data -->
-                <div class="form-group" >
-                    <label class="col-md-4 control-label" for="FirstName">First Name</label>  
+        <form class="form-horizontal">
+            <fieldset>
+
+                <input type="hidden" ng-model="_id" />
+
+                <!-- Record Data -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="FirstName">First Name</label>
                     <div class="col-md-4">
-                        <input id="FirstName" name="FirstName" ng-model="$scope.patients.FirstName" ng-readonly="{{recordDataReadOnly}}" placeholder="FirstName" class="form-control input-md" required="" type="text">
+                        <input id="FirstName" name="FirstName" ng-model="patients.FirstName" ng-readonly="{{recordDataReadOnly}}" placeholder="FirstName" class="form-control input-md" required="" type="text">
                     </div>
                 </div>
 
-                <div class="form-group" >
-                    <label class="col-md-4 control-label" for="MeasurementValue">Address</label>  
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="FirstName">Last Name</label>
                     <div class="col-md-4">
-                        <input id="Address" name="Address" ng-model="$scope.patients.Address" ng-readonly="{{recordDataReadOnly}}" placeholder="Address" class="form-control input-md" required="" type="text">
+                        <input id="LastName" name="LastName" ng-model="patients.LastName" ng-readonly="{{recordDataReadOnly}}" placeholder="LastName" class="form-control input-md" required="" type="text">
                     </div>
                 </div>
 
-                <div class="form-group" >
-                    <label class="col-md-4 control-label" for="DateOfBirth">Date Of Birth</label>  
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="MeasurementValue">Address</label>
                     <div class="col-md-4">
-                        <input id="DateOfBirth" name="DateOfBirth" ng-model="$scope.patients.DateOfBirth" ng-readonly="{{recordDataReadOnly}}" placeholder="DateOfBirth" class="form-control input-md" required="" type="text">
-                        <span class="help-block">format :MM/DD/YYYY</span>  
-                    </div>
-                </div>
-               
-                <div class="form-group" >
-                    <label class="col-md-4 control-label" for="Practitioner">Gender</label>  
-                    <div class="col-md-4">
-                        <input id="Gender" name="Gender" ng-model="$scope.patients.Gender" ng-readonly="{{recordDataReadOnly}}" placeholder="Gender" class="form-control input-md" required="" type="text">
+                        <input id="Address" name="Address" ng-model="patients.Address" ng-readonly="{{recordDataReadOnly}}" placeholder="Address" class="form-control input-md" required="" type="text">
                     </div>
                 </div>
 
-                <div class="form-group" >
-                    <label class="col-md-4 control-label" for="Telephone">Telephone</label>  
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="DateOfBirth">Date Of Birth</label>
                     <div class="col-md-4">
-                        <input id="Telephone" name="Telephone" ng-model="$scope.patients.Telephone" ng-readonly="{{recordDataReadOnly}}" placeholder="Telephone" class="form-control input-md" required="" type="text">
+                        <input id="DateOfBirth" name="DateOfBirth" ng-model="patients.DateOfBirth" ng-readonly="{{recordDataReadOnly}}" placeholder="DateOfBirth" class="form-control input-md" required="" type="text">
+                        <span class="help-block">format :MM/DD/YYYY</span>
                     </div>
                 </div>
-                
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="Practitioner">Gender</label>
+                    <div class="col-md-4">
+                        <input id="Gender" name="Gender" ng-model="patients.Gender" ng-readonly="{{recordDataReadOnly}}" placeholder="Gender" class="form-control input-md" required="" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="Telephone">Telephone</label>
+                    <div class="col-md-4">
+                        <input id="Telephone" name="Telephone" ng-model="patients.Telephone" ng-readonly="{{recordDataReadOnly}}" placeholder="Telephone" class="form-control input-md" required="" type="text">
+                    </div>
+                </div>
+
                 <!-- Emergency Contact Subgroup -->
                 <div class="card mb-3 ml-3">
                     <div class="card-header">
                         <i class="fa fa-fw user"></i> Emergency Contact
                     </div>
                     <div class="card-body">
-                        <div class="form-group" >
-                            <label class="col-md-4 control-label" for="Name">Name</label>  
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="Name">Name</label>
                             <div class="col-md-4">
-                                <input id="Name" name="Name" ng-model="$scope.patients.EmergencyContact.Name" ng-readonly="{{recordDataReadOnly}}" placeholder="Name" class="form-control input-md" type="text">
+                                <input id="Name" name="Name" ng-model="patients.EmergencyContact.Name" ng-readonly="{{recordDataReadOnly}}" placeholder="Name" class="form-control input-md" type="text">
                             </div>
                         </div>
-                        <div class="form-group" >
-                            <label class="col-md-4 control-label" for="Address">Address</label>  
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="Address">Address</label>
                             <div class="col-md-4">
-                                <input id="Address" name="Address" ng-model="$scope.patients.EmergencyContact.Address" ng-readonly="{{recordDataReadOnly}}" placeholder="Address" class="form-control input-md" type="text">
+                                <input id="Address" name="Address" ng-model="patients.EmergencyContact.Address" ng-readonly="{{recordDataReadOnly}}" placeholder="Address" class="form-control input-md" type="text">
                             </div>
                         </div>
-                        <div class="form-group" >
-                            <label class="col-md-4 control-label" for="Relationship">Relationship</label>  
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="Relationship">Relationship</label>
                             <div class="col-md-4">
-                                <input id="Relationship" name="Relationship" ng-model="$scope.patients.EmergencyContact.Relationship" ng-readonly="{{recordDataReadOnly}}" placeholder="Relationship" class="form-control input-md" type="text">
+                                <input id="Relationship" name="Relationship" ng-model="patients.EmergencyContact.Relationship" ng-readonly="{{recordDataReadOnly}}" placeholder="Relationship" class="form-control input-md" type="text">
                             </div>
                         </div>
-                        <div class="form-group" >
-                            <label class="col-md-4 control-label" for="Telephone">Telephone</label>  
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="Telephone">Telephone</label>
                             <div class="col-md-4">
-                                <input id="Telephone" name="Telephone" ng-model="$scope.patients.EmergencyContact.Telephone" ng-readonly="{{recordDataReadOnly}}" placeholder="Telephone" class="form-control input-md" type="text">
+                                <input id="Telephone" name="Telephone" ng-model="patients.EmergencyContact.Telephone" ng-readonly="{{recordDataReadOnly}}" placeholder="Telephone" class="form-control input-md" type="text">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group" >
-                    <label class="col-md-4 control-label" for="BloodType">BloodType</label>  
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="BloodType">BloodType</label>
                     <div class="col-md-4">
-                        <input id="BloodType" name="BloodType" ng-model="$scope.patients.BloodType" ng-readonly="{{recordDataReadOnly}}" placeholder="BloodType" class="form-control input-md" required="" type="text">
-                    </div>
-                </div>
-
-                <div class="form-group" >
-                    <label class="col-md-4 control-label" for="IsInCritcalCondition">In Critcal Condition</label>  
-                    <div class="col-md-4">
-                        <input id="IsInCritcalCondition" name="IsInCritcalCondition" ng-model="$scope.patients.IsInCritcalCondition" ng-readonly="{{recordDataReadOnly}}" placeholder="IsInCritcalCondition" class="form-control input-md" required="" type="text">
+                        <input id="BloodType" name="BloodType" ng-model="patients.BloodType" ng-readonly="{{recordDataReadOnly}}" placeholder="BloodType" class="form-control input-md" required="" type="text">
                     </div>
                 </div>
                 
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="InsurancePlan">InsurancePlan</label>
+                    <div class="col-md-4">
+                        <input id="InsurancePlan" name="InsurancePlan" ng-model="patients.InsurancePlan" ng-readonly="{{recordDataReadOnly}}" placeholder="InsurancePlan" class="form-control input-md" required="" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="IsInCritcalCondition">In Critical Condition</label>
+                    <div class="col-md-4">
+                        <input id="IsInCritcalCondition" name="IsInCritcalCondition" ng-model="patients.IsInCritcalCondition" ng-readonly="{{recordDataReadOnly}}" placeholder="IsInCritcalCondition" class="form-control input-md" required="" type="text">
+                    </div>
+                </div>
+
                 <!-- Button -->
                 <div class="form-group">
                     <!-- <label class="col-md-4 control-label" for="send">Submit</label> -->
                     <div class="col-md-4">
-                    <button id="Create" name="Create" ng-show="showButton" class="btn-primary btn-lg" data-ng-click="createPatient()" data-title="Create" title="Create" >Create</button>
+                        <button id="Create" name="Create" ng-show="showButton" class="btn-primary btn-lg" ng-click="createPatient()" data-title="{{btnCreateEditPatient}}" title="{{btnCreateEditPatient}}">{{btnCreateEditPatient}}</button>
                     </div>
                 </div>
-                
-                </fieldset>
-                </form>
-                    
+
+            </fieldset>
+        </form>
+
     </div>
 
     <script type="text/ng-template" id="confirmationModalContent.html">
-        <div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="createResult" aria-hidden="true" >
+        <div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="createResult" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                            <h4 class="modal-title custom_align" id="Heading">New Patient</h4>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title custom_align" id="Heading">New Patient</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger">
+                            <i class="fa fa-fw fa-pencil"></i>
+                            New Patient record created successfully !!
                         </div>
-                        <div class="modal-body">    
-                            <div class="alert alert-danger"><i class="fa fa-fw fa-pencil" ></i></span> 
-                                New Patient record created successfully !!
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn" data-dismiss="modal">
-                                OK
-                            </button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">
+                            OK
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </script>
-   
+
 </div>
-
-
-
