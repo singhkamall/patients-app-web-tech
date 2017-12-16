@@ -17,23 +17,27 @@ angular.module('myApp.record', ['ngRoute'])
         });
     }])
 
-    .controller('RecordController', function ($scope, $http, $routeParams, $location) {
+    .controller('RecordController', function ($scope, $http, $routeParams, $location, $window) {
         $scope.patientId = $routeParams.patientId;
         $scope.recordId = $routeParams.recordId;
         
         // Patient information is always readonly
         $scope.patientDataReadOnly = true;
-
-        // If "Edit" or "Create" Actions, enable text inputs and show Save Button
-        $scope.recordDataReadOnly = false;
-        $scope.showButton = true;
+        $scope.title = "Clinical Data";
 
         // Get action from local url
-        var segments = $location.path().split("/");
-        if(segments[3] && segments[3] == "records") {
+        if($location.path().indexOf("editRecords") >= 0 ||
+           $location.path().indexOf("createRecords") >= 0) {
+            // If "Edit" Actions, enable text inputs and show Save Button
+            $scope.recordDataReadOnly = false;
+            $scope.showButton = true;
+            $scope.title = "Edit Clinical Data Record";
+        }
+        else {
             // "View action". Disable text input and hide Save Button
             $scope.recordDataReadOnly = true;
             $scope.showButton = false;
+            $scope.title = "View Clinical Data Record";
         }
 
         $http.get("http://127.0.0.1:5000/patients/" + $scope.patientId)
@@ -60,6 +64,7 @@ angular.module('myApp.record', ['ngRoute'])
                 })
                 .then(function(response){
                     console.log(response);
+                    $window.location.href = 'index.html#!/patients/' + $scope.patientId + '/records' ;
                 })
             }
         };
@@ -76,6 +81,7 @@ angular.module('myApp.record', ['ngRoute'])
             })
             .then(function(response){
                 console.log(response);
+                $window.location.href = 'index.html#!/patients/' + $scope.patientId + '/records' ;
             })
         };
 
