@@ -42,3 +42,8 @@
 .table-striped tbody tr td {
   vertical-align: middle;
 }
+
+/* */
+@-ms-viewport{
+  width: device-width;
+}
