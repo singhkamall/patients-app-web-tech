@@ -12,12 +12,12 @@ angular.module('myApp.clinical-data', ['ngRoute'])
     .controller('ClinicalDataController', function ($scope, $http, $routeParams) {
         $scope.patientId = $routeParams.patientId;
 
-        $http.get("http://127.0.0.1:5000/patients/" + $scope.patientId)
+        $http.get("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId)
         .then(function (response) {
             $scope.patient = response.data;
         });
 
-        $http.get("http://127.0.0.1:5000/patients/" + $scope.patientId + "/records")
+        $http.get("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId + "/records")
             .then(function (response) {
                 $scope.records = response.data;
         });
@@ -27,11 +27,11 @@ angular.module('myApp.clinical-data', ['ngRoute'])
         }
 
         $scope.deleteRecord = function(selectedRecordId) {
-            $http.delete("http://127.0.0.1:5000/patients/" + $scope.patientId + "/records/" + selectedRecordId)
+            $http.delete("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId + "/records/" + selectedRecordId)
             .then(function (response) {
                 console.log(response);
                 //$scope.records.splice(selectedRecordId,1);
-                $http.get("http://127.0.0.1:5000/patients/" + $scope.patientId + "/records")
+                $http.get("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId + "/records")
                 .then(function (response) {
                     $scope.records = response.data;
             });
@@ -52,7 +52,7 @@ angular.module('myApp.clinical-data', ['ngRoute'])
 //     }])
 
 //     .factory('RecordsService', function ($resource) {
-//         var data = $resource('http://127.0.0.1:5000/patients/:patientId/records/:recordId',
+//         var data = $resource('https://mongo-patient-api.herokuapp.com/patients/:patientId/records/:recordId',
 //                                     {patientId:'@patientId', recordId:'@recordId'},
 //                                     {update:{ method:'PUT'}} );
 
@@ -66,7 +66,7 @@ angular.module('myApp.clinical-data', ['ngRoute'])
 //          $scope.records = RecordsService.query( {patientId:1});
 
         // //GET Action Method for ALL records of a specific patient
-        // var AllRecords = $resource('http://127.0.0.1:5000/patients/:patientId/records', {patientId:'@patientId'});
+        // var AllRecords = $resource('https://mongo-patient-api.herokuapp.com/patients/:patientId/records', {patientId:'@patientId'});
         // AllRecords.query( {patientId:1}, function(records){
         //     $scope.records = records;
         // })

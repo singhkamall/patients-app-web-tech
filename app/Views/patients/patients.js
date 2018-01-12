@@ -30,7 +30,7 @@ angular.module('myApp.patients', ['ngRoute'])
         console.log($location.path());
 
         $scope.title = "Patients";
-        let apiUrl = "http://127.0.0.1:5000/patients";
+        let apiUrl = "https://mongo-patient-api.herokuapp.com/patients";
 
         $scope.patientEditId = $routeParams.patientEditId;
 
@@ -75,7 +75,7 @@ angular.module('myApp.patients', ['ngRoute'])
 
         $scope.createEditPatient = "createPatient()";
         $scope.createPatient = function () {
-
+            console.log("hereQQQQQQQ");
             if (!$routeParams.patientEditId) {
 
                 //  Create
@@ -108,6 +108,8 @@ angular.module('myApp.patients', ['ngRoute'])
             } else {
                 // Edit
                 console.log('editing');
+                console.log($scope.patients);
+                
                 $scope.title  = "Edit Patient Information Form";
                 $http.put(apiUrl,
                     {

@@ -40,21 +40,22 @@ angular.module('myApp.record', ['ngRoute'])
             $scope.title = "View Clinical Data Record";
         }
 
-        $http.get("http://127.0.0.1:5000/patients/" + $scope.patientId)
+        $http.get("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId)
         .then(function (response) {
             $scope.patient = response.data;
         });
 
         if( $scope.recordId ) {
-            $http.get("http://127.0.0.1:5000/patients/" + $scope.patientId + "/records/" + $scope.recordId)
+            $http.get("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId + "/records/" + $scope.recordId)
             .then(function (response) {
-                $scope.recordDetails = response.data;
+                $scope.recordDetails = response.data[0];
+                console.log(response.data[0]);
             });
         }   
 
         $scope.updateRecord = function(){
             if( $scope.recordId ) {
-                $http.put("http://127.0.0.1:5000/patients/" + $scope.patientId + "/records/" + $scope.recordId, 
+                $http.put("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId + "/records/" + $scope.recordId, 
                 {
                     "Practitioner": $scope.recordDetails.Practitioner,
                     "MedicalCenter": $scope.recordDetails.MedicalCenter,
@@ -70,7 +71,7 @@ angular.module('myApp.record', ['ngRoute'])
         };
 
         $scope.createRecord = function(){
-            $http.post("http://127.0.0.1:5000/patients/" + $scope.patientId + "/records", 
+            $http.post("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId + "/records", 
             {
                 "PatientID": $scope.recordDetails.PatientID,
                 "Practitioner": $scope.recordDetails.Practitioner,
