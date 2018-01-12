@@ -5,7 +5,7 @@
         <i class="fa fa-medkit"></i> Clinical Data Record Form
     </div>
     <div class="card-body">
-        <form class="form-horizontal">
+        <form class="form-horizontal" name="frmRecord">
             <fieldset>
 
                 <!-- Select Basic -->
@@ -20,78 +20,76 @@
                     </div>
                 </div> -->
                 <!-- Patient Data -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="FirstName">First Name</label>
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" for="FirstName">First Name</label>
                         <input id="FirstName" name="FirstName" ng-readonly="{{patientDataReadOnly}}" ng-model="patient.FirstName" ng-readonly placeholder="FirstName Placeholder" class="form-control input-md" required="" type="text">
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="LastName">Last Name</label>
-                    <div class="col-md-4">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" for="LastName">Last Name</label>
                         <input id="LastName" name="LastName" ng-model="patient.LastName" ng-readonly="{{patientDataReadOnly}}" placeholder="LastName Placeholder" class="form-control input-md" required="" type="text">
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="DateOfBirth">Date of Birth</label>
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" for="DateOfBirth">Date of Birth</label>
                         <input id="DateOfBirth" name="DateOfBirth" ng-model="patient.DateOfBirth" ng-readonly="{{patientDataReadOnly}}" placeholder="Date of Birth" class="form-control input-md" required="" type="text">
-                        <span class="help-block">format :MM/DD/YYYY</span>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="Gender">Gender</label>
-                    <div class="col-md-4">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" for="Gender">Gender</label>
                         <input id="Gender" name="Gender" ng-model="patient.Gender" ng-readonly="{{patientDataReadOnly}}" placeholder="Gender Placeholder" class="form-control input-md" required="" type="text">
                     </div>
                 </div>
 
                 <!-- Record Data -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="MeasurementType">Measurement Type</label>
-                    <div class="col-md-4">
-                        <input id="MeasurementType" name="MeasurementType" ng-model="recordDetails.DataType" ng-readonly="{{recordDataReadOnly}}" placeholder="MeasurementType" class="form-control input-md" required="" type="text">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" for="MeasurementType">Measurement Type</label>
+                        <select id="MeasurementType" name="MeasurementType" ng-model="recordDetails.DataType" ng-readonly="{{recordDataReadOnly}}" class="form-control input-md" required>
+                            <option></option>
+                            <option value="Body Temperature (C)">Body Temperature (C)</option>
+                            <option value="Blood Pressure">Blood Pressure</option>
+                            <option value="Heart Rate">Heart Rate</option>
+                            <option value="Systolic Blood Pressure">Systolic Blood Pressure</option>
+                            <option value="Diastolic Blood Pressure">Diastolic Blood Pressure</option>
+                            <option value="Red Blood Cell">Red Blood Cell</option>
+                        </select>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="MeasurementValue">Reading</label>
-                    <div class="col-md-4">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" for="MeasurementValue">Reading</label>
                         <input id="MeasurementValue" name="MeasurementValue" ng-model="recordDetails.Reading" ng-readonly="{{recordDataReadOnly}}" placeholder="MeasurementValue" class="form-control input-md" required="" type="text">
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="MeasurementDate">Date</label>
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" for="MeasurementDate">Date</label>
                         <input id="MeasurementDate" name="MeasurementDate" ng-model="recordDetails.DateTime" ng-readonly="{{recordDataReadOnly}}" placeholder="MeasurementDate" class="form-control input-md" required="" type="text">
-                        <span class="help-block">format :MM/DD/YYYY</span>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="Practitioner">Practitioner</label>
-                    <div class="col-md-4">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" for="Practitioner">Practitioner</label>
                         <input id="Practitioner" name="Practitioner" ng-model="recordDetails.Practitioner" ng-readonly="{{recordDataReadOnly}}" placeholder="Practitioner" class="form-control input-md" required="" type="text">
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="MedicalCenter">MedicalCenter</label>
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="control-label" for="MedicalCenter">MedicalCenter</label>
                         <input id="MedicalCenter" name="MedicalCenter" ng-model="recordDetails.MedicalCenter" ng-readonly="{{recordDataReadOnly}}" placeholder="MedicalCenter" class="form-control input-md" required="" type="text">
                     </div>
                 </div>
 
 
                 <!-- Button -->
-                <div class="form-group">
-                    <!-- <label class="col-md-4 control-label" for="send">Submit</label> -->
-                    <div class="col-md-4">
-                        <button id="Save" name="Save" ng-show="showButton" class="btn-primary btn-lg" data-title="Update" data-toggle="modal" data-target="#update" title="Update">Save</button>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <button id="Save" name="Save" class="btn-primary btn-lg" data-title="Update" data-ng-click="showModal()">Save</button>
+                        <!--<button id="Save" name="Save" ng-show="showButton" class="btn-primary btn-lg" data-title="Update" data-toggle="modal" data-target="#update" title="Update">Save</button>-->
                     </div>
                 </div>
 

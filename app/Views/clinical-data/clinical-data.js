@@ -13,32 +13,33 @@ angular.module('myApp.clinical-data', ['ngRoute'])
         $scope.patientId = $routeParams.patientId;
 
         $http.get("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId)
-        .then(function (response) {
-            $scope.patient = response.data;
-        });
+            .then(function (response) {
+                $scope.patient = response.data;
+            });
 
         $http.get("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId + "/records")
             .then(function (response) {
                 $scope.records = response.data;
-        });
+            });
 
-        $scope.openModal=function (recordId){
+        $scope.openModal = function (recordId) {
             $scope.selectedRecordId = recordId;
         }
 
-        $scope.deleteRecord = function(selectedRecordId) {
+        $scope.deleteRecord = function (selectedRecordId) {
             $http.delete("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId + "/records/" + selectedRecordId)
-            .then(function (response) {
-                console.log(response);
-                //$scope.records.splice(selectedRecordId,1);
-                $http.get("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId + "/records")
                 .then(function (response) {
-                    $scope.records = response.data;
-            });
-            });
+                    console.log(response);
+                    //$scope.records.splice(selectedRecordId,1);
+                    $http.get("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId + "/records")
+                        .then(function (response) {
+                            toastr.success('Patient Record Deleted Successfully')
+                            $scope.records = response.data;
+                        });
+                });
         };
 
-        
+
     });
 
 
@@ -76,7 +77,7 @@ angular.module('myApp.clinical-data', ['ngRoute'])
         // OneRecord.get( {patientId:1, recordId:1}, function(record){
         //     $scope.record = record;
         // })
-        
+
         // //GET Action Method for all records 
         // var CriticalPatients = $resource('/patients/criticalCondition');
         // CriticalPatients.query(function(criticalPatients){

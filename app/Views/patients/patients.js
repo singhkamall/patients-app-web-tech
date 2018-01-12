@@ -108,9 +108,10 @@ angular.module('myApp.patients', ['ngRoute'])
                             "IsInCritcalCondition": $scope.patients.IsInCritcalCondition
                         })
                         .then(function (response) {
+                            toastr.success('New Patient Added')
 
                             $window.location.href = 'index.html#!/patients';
-                            
+
                         })
                 }
             } else {
@@ -140,9 +141,10 @@ angular.module('myApp.patients', ['ngRoute'])
                             "IsInCritcalCondition": $scope.patients.IsInCritcalCondition
                         })
                         .then(function (response) {
+                            toastr.success('Patient Information Updated')
 
                             $window.location.href = 'index.html#!/patients';
-                            
+
                         })
                 }
             }
@@ -154,7 +156,8 @@ angular.module('myApp.patients', ['ngRoute'])
 
                 $http.delete(apiUrl + '/' + patientId)
                     .then(function () {
-                        alert('Deleted Successfully');
+                        toastr.success('Patient Deleted Successfully')
+
                         getPatientsData();
                     });
 
