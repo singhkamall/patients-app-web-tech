@@ -43,7 +43,7 @@
   vertical-align: middle;
 }
 
-/* */
+/* To ensure the content will be seen in all the available width */
 @-ms-viewport{
   width: device-width;
 }
