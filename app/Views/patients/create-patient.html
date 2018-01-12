@@ -113,7 +113,12 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label class="control-label" for="IsInCritcalCondition">In Critical Condition</label>
-                        <input id="IsInCritcalCondition" name="IsInCritcalCondition" ng-model="patients.IsInCritcalCondition" ng-readonly="{{recordDataReadOnly}}" placeholder="IsInCritcalCondition" class="form-control input-md" required="" type="text">
+                        <select id="IsInCritcalCondition" name="IsInCritcalCondition" ng-model="patients.IsInCritcalCondition" ng-readonly="{{recordDataReadOnly}}" class="form-control input-md" required>
+                            <option></option>
+                            <option value="true" ng-selected="patients.IsInCritcalCondition === true">Yes</option>
+                            <option value="false" ng-selected="patients.IsInCritcalCondition === false">No</option>
+                        </select>
+                        <!--<input id="IsInCritcalCondition" name="IsInCritcalCondition" ng-model="patients.IsInCritcalCondition" ng-readonly="{{recordDataReadOnly}}" placeholder="IsInCritcalCondition" class="form-control input-md" required="" type="text">-->
                     </div>
                 </div>
 

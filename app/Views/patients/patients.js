@@ -27,7 +27,6 @@ angular.module('myApp.patients', ['ngRoute'])
 
     .controller('PatientsController', function ($scope, $http, $location, $window, $routeParams) {
         // By default we config api call and page title for showing all patients
-        console.log($location.path());
 
         $scope.$watch('createBusinessForm.$valid', function (newVal) {
             //$scope.valid = newVal;
@@ -74,7 +73,7 @@ angular.module('myApp.patients', ['ngRoute'])
             $http.get(apiUrl)
                 .then(function (response) {
                     $scope.patients = response.data;
-
+                    console.log(response.data);
                     $('[name=DateOfBirth]').datepicker({
                     });
                 });
@@ -83,11 +82,9 @@ angular.module('myApp.patients', ['ngRoute'])
 
         $scope.createEditPatient = "createPatient()";
         $scope.createPatient = function () {
-            console.log("hereQQQQQQQ");
             if (!$routeParams.patientEditId) {
 
                 //  Create
-                console.log('creating');
 
                 if ($scope.frmPatient.$valid) {
                     // Code here if valid
@@ -113,14 +110,11 @@ angular.module('myApp.patients', ['ngRoute'])
                         .then(function (response) {
 
                             $window.location.href = 'index.html#!/patients';
-
-                            console.log(response);
+                            
                         })
                 }
             } else {
                 // Edit
-                console.log('editing');
-                console.log($scope.patients);
 
                 $scope.title = "Edit Patient Information Form";
 
@@ -148,8 +142,7 @@ angular.module('myApp.patients', ['ngRoute'])
                         .then(function (response) {
 
                             $window.location.href = 'index.html#!/patients';
-
-                            console.log(response);
+                            
                         })
                 }
             }
