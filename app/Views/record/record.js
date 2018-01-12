@@ -43,6 +43,9 @@ angular.module('myApp.record', ['ngRoute'])
         $http.get("https://mongo-patient-api.herokuapp.com/patients/" + $scope.patientId)
         .then(function (response) {
             $scope.patient = response.data;
+
+            $('[name=MeasurementDate]').datepicker({
+            });
         });
 
         if( $scope.recordId ) {
