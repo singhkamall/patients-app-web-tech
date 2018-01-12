@@ -47,3 +47,42 @@
 @-ms-viewport{
   width: device-width;
 }
+
+/*
+*************************** 
+Media Queries
+***************************
+*/
+
+/* FLUID TYPOGRAPHY */
+/* [minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]); */
+
+/* Minimum sizes for the smallest screen.
+   It is in fixed units but from that point we appy fluid increase of size */
+   
+  .fluid-type-h1 {
+    font-size: 25px;
+  }
+  
+  /* For Mobile */
+  @media (min-width: 320px) and (max-width: 799px) {  
+   
+    .fluid-type-h1{
+      font-size: calc(25px + 10 * ((100vw - 320px) / 479));
+    }
+  }
+  /* For Tablets */
+  @media (min-width: 800px) and (max-width: 1199px) {  
+   
+    .fluid-type-h1{
+      font-size: calc(35px + 10 * ((100vw - 800px) / 399)); 
+    }
+  }
+  /* For Desktop */
+  @media (min-width: 1200px) {  
+    
+    .fluid-type-h1{
+      font-size: calc(45px + 10 * ((100vw - 1200px) / 760)); 
+    }
+    
+  }
