@@ -1,0 +1,18 @@
+swagger: "2.0"
+info:
+    version: "1.0.0"
+    title: Patients Clinical Data App
+host: simple-patient-api.herokuapp.com
+basePath: /
+schemes:
+  https
+consumes:
+    - application/json
+paths:
+  /patients:
+    get:
+      description: Gets a list of all patients
+      summary: All patients
+      responses:
+        "default":
+          description: Success

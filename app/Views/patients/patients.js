@@ -29,6 +29,11 @@ angular.module('myApp.patients', ['ngRoute'])
         // By default we config api call and page title for showing all patients
         console.log($location.path());
 
+        $scope.$watch('createBusinessForm.$valid', function (newVal) {
+            //$scope.valid = newVal;
+            $scope.informationStatus = true;
+        });
+
         $scope.title = "Patients";
         let apiUrl = "https://mongo-patient-api.herokuapp.com/patients";
 
@@ -59,16 +64,19 @@ angular.module('myApp.patients', ['ngRoute'])
             apiUrl += '/' + $scope.patientEditId;
             $scope.title = "Edit Patient Information Form";
             $scope.btnCreateEditPatient = "Save";
-        }   
+        }
         else if ($routeParams.patientViewId) {
             apiUrl += '/' + $routeParams.patientViewId;
             $scope.title = "View Patient Information";
-        }   
+        }
 
         var getPatientsData = function () {
             $http.get(apiUrl)
                 .then(function (response) {
                     $scope.patients = response.data;
+
+                    $('[name=DateOfBirth]').datepicker({
+                    });
                 });
         }
         getPatientsData();
@@ -80,62 +88,70 @@ angular.module('myApp.patients', ['ngRoute'])
 
                 //  Create
                 console.log('creating');
-                
-                $http.post(apiUrl,
-                    {
-                        "FirstName": $scope.patients.FirstName,
-                        "LastName": $scope.patients.LastName,
-                        "Address": $scope.patients.Address,
-                        "DateOfBirth": $scope.patients.DateOfBirth,
-                        "Gender": $scope.patients.Gender,
-                        "Telephone": $scope.patients.Telephone,
-                        "EmergencyContact": {
-                            "Name": $scope.patients.EmergencyContact.Name,
-                            "Address": $scope.patients.EmergencyContact.Address,
-                            "Relationship": $scope.patients.EmergencyContact.Relationship,
-                            "Telephone": $scope.patients.EmergencyContact.Telephone
-                        },
-                        "BloodType": $scope.patients.BloodType,
-                        "InsurancePlan": $scope.patients.InsurancePlan,
-                        "IsInCritcalCondition": $scope.patients.IsInCritcalCondition
-                    })
-                    .then(function (response) {
 
-                        $window.location.href = 'index.html#!/patients';
+                if ($scope.frmPatient.$valid) {
+                    // Code here if valid
 
-                        console.log(response);
-                    })
+                    $http.post(apiUrl,
+                        {
+                            "FirstName": $scope.patients.FirstName,
+                            "LastName": $scope.patients.LastName,
+                            "Address": $scope.patients.Address,
+                            "DateOfBirth": $scope.patients.DateOfBirth,
+                            "Gender": $scope.patients.Gender,
+                            "Telephone": $scope.patients.Telephone,
+                            "EmergencyContact": {
+                                "Name": $scope.patients.EmergencyContact.Name,
+                                "Address": $scope.patients.EmergencyContact.Address,
+                                "Relationship": $scope.patients.EmergencyContact.Relationship,
+                                "Telephone": $scope.patients.EmergencyContact.Telephone
+                            },
+                            "BloodType": $scope.patients.BloodType,
+                            "InsurancePlan": $scope.patients.InsurancePlan,
+                            "IsInCritcalCondition": $scope.patients.IsInCritcalCondition
+                        })
+                        .then(function (response) {
+
+                            $window.location.href = 'index.html#!/patients';
+
+                            console.log(response);
+                        })
+                }
             } else {
                 // Edit
                 console.log('editing');
                 console.log($scope.patients);
-                
-                $scope.title  = "Edit Patient Information Form";
-                $http.put(apiUrl,
-                    {
-                        // "_id": $scope.patients._id,
-                        "FirstName": $scope.patients.FirstName,
-                        "LastName": $scope.patients.LastName,
-                        "Address": $scope.patients.Address,
-                        "DateOfBirth": $scope.patients.DateOfBirth,
-                        "Gender": $scope.patients.Gender,
-                        "Telephone": $scope.patients.Telephone,
-                        "EmergencyContact": {
-                            "Name": $scope.patients.EmergencyContact.Name,
-                            "Address": $scope.patients.EmergencyContact.Address,
-                            "Relationship": $scope.patients.EmergencyContact.Relationship,
-                            "Telephone": $scope.patients.EmergencyContact.Telephone
-                        },
-                        "BloodType": $scope.patients.BloodType,
-                        "InsurancePlan": $scope.patients.InsurancePlan,
-                        "IsInCritcalCondition": $scope.patients.IsInCritcalCondition
-                    })
-                    .then(function (response) {
 
-                        $window.location.href = 'index.html#!/patients';
+                $scope.title = "Edit Patient Information Form";
 
-                        console.log(response);
-                    })
+                if ($scope.frmPatient.$valid) {
+                    // Code here if valid
+                    $http.put(apiUrl,
+                        {
+                            // "_id": $scope.patients._id,
+                            "FirstName": $scope.patients.FirstName,
+                            "LastName": $scope.patients.LastName,
+                            "Address": $scope.patients.Address,
+                            "DateOfBirth": $scope.patients.DateOfBirth,
+                            "Gender": $scope.patients.Gender,
+                            "Telephone": $scope.patients.Telephone,
+                            "EmergencyContact": {
+                                "Name": $scope.patients.EmergencyContact.Name,
+                                "Address": $scope.patients.EmergencyContact.Address,
+                                "Relationship": $scope.patients.EmergencyContact.Relationship,
+                                "Telephone": $scope.patients.EmergencyContact.Telephone
+                            },
+                            "BloodType": $scope.patients.BloodType,
+                            "InsurancePlan": $scope.patients.InsurancePlan,
+                            "IsInCritcalCondition": $scope.patients.IsInCritcalCondition
+                        })
+                        .then(function (response) {
+
+                            $window.location.href = 'index.html#!/patients';
+
+                            console.log(response);
+                        })
+                }
             }
         };
 
